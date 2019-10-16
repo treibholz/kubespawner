@@ -9,6 +9,7 @@ from functools import partial  # noqa
 import os
 import sys
 import string
+import datetime
 import multiprocessing
 from concurrent.futures import ThreadPoolExecutor
 import warnings
@@ -70,7 +71,7 @@ class EventReflector(NamespacedResourceReflector):
     def events(self):
         return sorted(
             self.resources.values(),
-            key=lambda x: x.last_timestamp if x.last_timestamp is not None else 0,
+            key=lambda x: x.last_timestamp if x.last_timestamp is not None else datetime.datetime(1970, 1, 1, 0, 0),
         )
 
 
