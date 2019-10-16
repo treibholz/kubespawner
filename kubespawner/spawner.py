@@ -69,9 +69,9 @@ class EventReflector(NamespacedResourceReflector):
 
     @property
     def events(self):
+        epoch=datetime.datetime(1970, 1, 1, 0, 0, tzinfo=datetime.timezone.utc)
         return sorted(
             self.resources.values(),
-            epoch=datetime.datetime(1970, 1, 1, 0, 0, tzinfo=datetime.timezone.utc)
             key=lambda x: x.last_timestamp if x.last_timestamp is not None else epoch,
         )
 
